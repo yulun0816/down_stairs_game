@@ -1,6 +1,8 @@
-# AI Down Stairs Game
+# AI Down Stairs Game 🎮👻
 
 這是一個使用 React + Vite + Gemini API 製作的下樓梯小遊戲。
+
+🎯 **線上遊玩**: https://yulun0816.github.io/down_stairs_game/
 
 ## 如何在本機執行 (開發模式)
 
