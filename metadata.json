@@ -1,0 +1,5 @@
+{
+  "name": "AI Down Stairs",
+  "description": "A classic 'Down the Stairs' survival game featuring an AI commentator powered by Gemini 2.5 Flash.",
+  "requestFramePermissions": []
+}
