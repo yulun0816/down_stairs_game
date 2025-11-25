@@ -2,11 +2,11 @@ import { GoogleGenAI } from "@google/genai";
 
 // Fallback commentary based on score
 const getFallbackCommentary = (score: number): string => {
-  if (score > 500) return "Wow! You're on fire! 🔥 Keep pushing those limits!";
-  if (score > 300) return "Not bad at all! You're getting the hang of this! 💪";
-  if (score > 150) return "Decent run! A bit more practice and you'll be unstoppable! 😎";
-  if (score > 50) return "Getting warmer... Keep trying! 😅";
-  return "Game Over! Better luck next time! 🎮";
+  if (score > 500) return "哇!你太強了! 🔥 繼續突破極限!";
+  if (score > 300) return "還不錯!你越來越上手了! 💪";
+  if (score > 150) return "不錯的成績!再練習一下就無敵了! 😎";
+  if (score > 50) return "有點意思...繼續加油! 😅";
+  return "遊戲結束!下次再接再厲! 🎮";
 };
 
 export const generateGameCommentary = async (score: number, depth: number, deathReason: string): Promise<string> => {
@@ -23,9 +23,9 @@ export const generateGameCommentary = async (score: number, depth: number, death
     const ai = new GoogleGenAI({ apiKey });
 
     const prompt = `
-      The user just finished a game of "Down the Stairs".
-      Stats: Score ${score}, Depth ${depth}m, Death by ${deathReason}.
-      Provide a witty, sarcastic commentary (max 2 sentences, use emojis).
+      玩家剛完成一局「下樓梯」遊戲。
+      數據: 分數 ${score}, 深度 ${depth}公尺, 死因: ${deathReason}。
+      請提供風趣、諷刺的評論(最多2句話,使用表情符號),並使用繁體中文回答。
     `;
 
     const response = await ai.models.generateContent({

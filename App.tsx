@@ -215,8 +215,8 @@ const App: React.FC = () => {
               </h1>
               {hasSavedName && (
                 <div className="mb-6 text-slate-400 text-sm flex items-center gap-2 bg-slate-800/80 px-4 py-2 rounded-full border border-slate-700 shadow-md">
-                  <span>Hi, <span className="text-white font-bold font-mono text-base">{localStorage.getItem('ADS_PLAYER_NAME')}</span></span>
-                  <button onClick={handleChangeName} className="p-1.5 hover:bg-slate-600 rounded-full text-pink-400 hover:text-white transition-colors" title="Change Name">
+                  <span>嗨, <span className="text-white font-bold font-mono text-base">{localStorage.getItem('ADS_PLAYER_NAME')}</span></span>
+                  <button onClick={handleChangeName} className="p-1.5 hover:bg-slate-600 rounded-full text-pink-400 hover:text-white transition-colors" title="變更名稱">
                     <Edit2 size={14} />
                   </button>
                 </div>
@@ -225,7 +225,7 @@ const App: React.FC = () => {
                 onClick={handleStartGame}
                 className="group relative px-10 py-4 bg-white text-slate-950 rounded-full font-black text-xl transition-all hover:scale-110 hover:shadow-[0_0_30px_rgba(255,255,255,0.4)] active:scale-95"
               >
-                START GAME
+                開始遊戲
               </button>
             </div>
           )}
@@ -236,13 +236,13 @@ const App: React.FC = () => {
               
               {!showLeaderboard ? (
                 <>
-                  <h2 className="text-3xl font-black text-white mb-1 drop-shadow-lg">GAME OVER</h2>
+                  <h2 className="text-3xl font-black text-white mb-1 drop-shadow-lg">遊戲結束</h2>
                   <div className="text-transparent bg-clip-text bg-gradient-to-b from-yellow-300 to-yellow-600 text-5xl font-mono font-bold mb-4 drop-shadow-sm">{score}</div>
                   
                   {/* AI Commentary */}
                   <div className="bg-slate-800/50 p-4 rounded-xl border border-slate-700 mb-4 w-full max-w-xs shadow-xl backdrop-blur-xl relative overflow-hidden">
                     <div className="text-[10px] uppercase tracking-widest text-purple-400 font-bold mb-2 flex items-center justify-center gap-2">
-                       <span className="w-2 h-2 bg-purple-400 rounded-full animate-pulse"></span> AI COMMENTARY
+                       <span className="w-2 h-2 bg-purple-400 rounded-full animate-pulse"></span> AI 評論
                     </div>
                     {isLoadingAi ? (
                       <div className="h-8 flex justify-center items-center gap-1">
@@ -261,9 +261,9 @@ const App: React.FC = () => {
                   {hasSavedName ? (
                     <div className="bg-slate-800/30 p-4 rounded-xl border border-slate-700/50 mb-6 w-full max-w-xs">
                        <div className="flex justify-between items-center text-sm mb-3">
-                          <span className="text-slate-400">Player: <strong className="text-white font-mono text-lg ml-1">{localStorage.getItem('ADS_PLAYER_NAME')}</strong></span>
+                          <span className="text-slate-400">玩家: <strong className="text-white font-mono text-lg ml-1">{localStorage.getItem('ADS_PLAYER_NAME')}</strong></span>
                           <button onClick={handleChangeName} className="text-xs text-slate-500 hover:text-white flex items-center gap-1 hover:underline">
-                            Change <Edit2 size={10} />
+                            變更 <Edit2 size={10} />
                           </button>
                        </div>
                        
@@ -273,28 +273,28 @@ const App: React.FC = () => {
                            'bg-slate-900/50 text-slate-400'}`}>
                           
                           {autoSubmitStatus === 'submitting' && (
-                             <><Loader2 size={16} className="animate-spin" /> Uploading Score...</>
+                             <><Loader2 size={16} className="animate-spin" /> 上傳分數中...</>
                           )}
                           {autoSubmitStatus === 'success' && (
-                             <><CheckCircle2 size={16} /> Score Saved Automatically!</>
+                             <><CheckCircle2 size={16} /> 分數已自動儲存!</>
                           )}
                           {autoSubmitStatus === 'error' && (
-                             <><AlertCircle size={16} /> Upload Failed</>
+                             <><AlertCircle size={16} /> 上傳失敗</>
                           )}
                           {autoSubmitStatus === 'idle' && (
-                             <span className="text-slate-500">Ready</span>
+                             <span className="text-slate-500">就緒</span>
                           )}
                        </div>
                     </div>
                   ) : (
                     // New Player Input
                     <div className="flex flex-col gap-2 mb-6 w-full max-w-xs">
-                      <div className="text-xs text-slate-400 uppercase font-bold tracking-widest text-left pl-1">New High Score?</div>
+                      <div className="text-xs text-slate-400 uppercase font-bold tracking-widest text-left pl-1">新高分?</div>
                       <div className="flex gap-2">
-                        <input 
-                          type="text" 
+                        <input
+                          type="text"
                           maxLength={10}
-                          placeholder="ENTER NAME" 
+                          placeholder="輸入名稱" 
                           value={playerName}
                           onChange={(e) => setPlayerName(e.target.value)}
                           className="flex-1 bg-slate-800 border border-slate-700 rounded-lg px-3 py-2 text-white focus:outline-none focus:ring-2 focus:ring-pink-500 uppercase font-bold text-center placeholder:text-slate-600 shadow-inner"
@@ -315,34 +315,34 @@ const App: React.FC = () => {
                       onClick={handleStartGame}
                       className="w-full py-3 bg-pink-500 hover:bg-pink-400 text-white rounded-xl font-bold text-lg transition-all shadow-[0_4px_0_rgb(190,24,93)] active:translate-y-0 active:shadow-none flex items-center justify-center gap-2"
                     >
-                      <RotateCcw size={20} /> TRY AGAIN
+                      <RotateCcw size={20} /> 再玩一次
                     </button>
                     <button
                       onClick={() => setShowLeaderboard(true)}
                       className="w-full py-3 bg-slate-700 hover:bg-slate-600 text-white rounded-xl font-bold text-lg transition-all flex items-center justify-center gap-2"
                     >
-                      <List size={20} /> LEADERBOARD
+                      <List size={20} /> 排行榜
                     </button>
                   </div>
                 </>
               ) : (
                 <div className="w-full max-w-xs h-full py-4 flex flex-col">
                   <h3 className="text-2xl font-bold text-yellow-400 mb-4 flex items-center justify-center gap-2">
-                    <Trophy size={24} /> TOP 10
+                    <Trophy size={24} /> 前 10 名
                   </h3>
                   <div className="flex-1 overflow-y-auto bg-slate-800/50 rounded-xl border border-slate-700 p-2 mb-4 scrollbar-thin scrollbar-thumb-slate-600 shadow-inner">
                     <table className="w-full text-left text-sm">
                       <thead className="text-slate-400 border-b border-slate-700 bg-slate-800/80 sticky top-0">
                         <tr>
                           <th className="p-2">#</th>
-                          <th className="p-2">NAME</th>
-                          <th className="p-2 text-right">SCORE</th>
+                          <th className="p-2">名稱</th>
+                          <th className="p-2 text-right">分數</th>
                         </tr>
                       </thead>
                       <tbody>
                         {leaderboard.length === 0 ? (
                           <tr><td colSpan={3} className="p-8 text-center text-slate-500 italic">
-                             {isSubmitting ? <Loader2 size={24} className="animate-spin mx-auto mb-2" /> : "No records yet..."}
+                             {isSubmitting ? <Loader2 size={24} className="animate-spin mx-auto mb-2" /> : "尚無紀錄..."}
                           </td></tr>
                         ) : (
                           leaderboard.map((entry, i) => (
@@ -360,7 +360,7 @@ const App: React.FC = () => {
                     onClick={() => setShowLeaderboard(false)}
                     className="w-full py-3 bg-slate-700 hover:bg-slate-600 text-white rounded-xl font-bold transition-all flex items-center justify-center gap-2"
                   >
-                    <ArrowLeft size={20} /> BACK
+                    <ArrowLeft size={20} /> 返回
                   </button>
                 </div>
               )}
@@ -390,7 +390,7 @@ const App: React.FC = () => {
         
         {/* Mobile Hint */}
         <div className="text-center text-slate-500 text-xs mt-2 opacity-50">
-          Tap left/right side to move • Keyboard arrows supported
+          點擊左/右側移動 • 支援鍵盤方向鍵
         </div>
 
       </div>

@@ -7,7 +7,7 @@ const GOOGLE_SCRIPT_URL = import.meta.env.VITE_LEADERBOARD_URL || '';
 
 export const submitScore = async (name: string, score: number, depth: number): Promise<boolean> => {
   if (!GOOGLE_SCRIPT_URL) {
-    console.warn("Leaderboard unavailable: VITE_LEADERBOARD_URL not set");
+    console.warn("排行榜無法使用: 未設定 VITE_LEADERBOARD_URL");
     return false;
   }
 
@@ -29,7 +29,7 @@ export const submitScore = async (name: string, score: number, depth: number): P
 
     return true;
   } catch (error) {
-    console.error("Failed to submit score:", error);
+    console.error("提交分數失敗:", error);
     return false;
   }
 };
@@ -43,7 +43,7 @@ export const getLeaderboard = async (): Promise<LeaderboardEntry[]> => {
     const data = await response.json();
     return data as LeaderboardEntry[];
   } catch (error) {
-    console.error("Failed to fetch leaderboard:", error);
+    console.error("獲取排行榜失敗:", error);
     return [];
   }
 };
