@@ -1,6 +1,6 @@
 import { GoogleGenAI } from "@google/genai";
 
-// Fallback commentary based on score
+// 根據分數提供降級評論
 const getFallbackCommentary = (score: number): string => {
   if (score > 500) return "哇!你太強了! 🔥 繼續突破極限!";
   if (score > 300) return "還不錯!你越來越上手了! 💪";
@@ -11,15 +11,15 @@ const getFallbackCommentary = (score: number): string => {
 
 export const generateGameCommentary = async (score: number, depth: number, deathReason: string): Promise<string> => {
   try {
-    // Check if API key is valid
+    // 檢查 API Key 是否有效
     const apiKey = process.env.API_KEY;
 
     if (!apiKey || apiKey === 'PLACEHOLDER_API_KEY' || apiKey === 'undefined') {
-      // No valid API key, use fallback
+      // 沒有有效的 API Key,使用降級評論
       return getFallbackCommentary(score);
     }
 
-    // Initialize client with valid API key
+    // 使用有效的 API Key 初始化客戶端
     const ai = new GoogleGenAI({ apiKey });
 
     const prompt = `
@@ -35,7 +35,7 @@ export const generateGameCommentary = async (score: number, depth: number, death
 
     return response.text || getFallbackCommentary(score);
   } catch (error) {
-    console.warn("Gemini API unavailable, using fallback commentary");
+    console.warn("Gemini API 無法使用,使用降級評論");
     return getFallbackCommentary(score);
   }
 };
